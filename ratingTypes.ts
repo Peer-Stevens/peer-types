@@ -20,6 +20,37 @@ export interface Rating {
     dateCreated: Date;
     dateEdited?: Date;
 }
+
+export type PlaceWithAccesibilityData = Place & {
+	accessibilityData?: {
+		_id: string;
+        guideDogAvg: number;
+		isMenuAccessibleAvg: number;
+		noiseLevelAvg: number;
+		lightingAvg: number;
+		isStaffHelpfulAvg: number;
+		isBathroomOnEntranceFloorAvg: number;
+		isContactlessPaymentOfferedAvg: number;
+		isStairsRequiredAvg: number;
+		spacingAvg: number;
+	};
+};
+
+export type PlaceDetailsWithAccesibilityData = {
+	result: Place;
+	accessibilityData?: {
+		_id: string;
+        guideDogAvg: number;
+		isMenuAccessibleAvg: number;
+		noiseLevelAvg: number;
+		lightingAvg: number;
+		isStaffHelpfulAvg: number;
+		isBathroomOnEntranceFloorAvg: number;
+		isContactlessPaymentOfferedAvg: number;
+		isStairsRequiredAvg: number;
+		spacingAvg: number;
+	};
+};
  
 export interface Place {
 	_id: GooglePlace["place_id"];
