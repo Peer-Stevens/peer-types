@@ -21,50 +21,24 @@ export interface Rating {
     dateEdited?: Date;
 }
 
-export type PlaceWithAccesibilityData = Place & {
-	accessibilityData?: {
-		_id: string;
-        guideDogAvg: number;
-		isMenuAccessibleAvg: number;
-		noiseLevelAvg: number;
-		lightingAvg: number;
-		isStaffHelpfulAvg: number;
-		isBathroomOnEntranceFloorAvg: number;
-		isContactlessPaymentOfferedAvg: number;
-		isStairsRequiredAvg: number;
-		spacingAvg: number;
-	};
-};
+export const fieldsToNamesMap: Record<string,string> = {
+    avgGuideDogFriendly: "Guide Dog Friendliness",
+    isMenuAccessibleAvg: "Menu Accessibility",
+    noiseLevelAvg: "Noise Level",
+    lightingAvg: "Lighting",
+    isStaffHelpfulAvg: "Staff Helpfulness",
+    isBathroomOnEntranceFloorAvg: "Bathroom On Entrance Floor",
+    isContactlessPaymentOfferedAvg: "Contactless Payment Offered",
+    isStairsRequiredAvg: "Stairs Required",
+    spacingAvg: "Spacing",
+  };
 
-export type PlaceDetailsWithAccesibilityData = {
-	result: Place;
-	accessibilityData?: {
-		_id: string;
-        guideDogAvg: number;
-		isMenuAccessibleAvg: number;
-		noiseLevelAvg: number;
-		lightingAvg: number;
-		isStaffHelpfulAvg: number;
-		isBathroomOnEntranceFloorAvg: number;
-		isContactlessPaymentOfferedAvg: number;
-		isStairsRequiredAvg: number;
-		spacingAvg: number;
-	};
-};
- 
-export interface Place {
-	_id: GooglePlace["place_id"];
-	guideDogAvg: number | null;
-	isMenuAccessibleAvg: number | null;
-	noiseLevelAvg: number | null;
-	lightingAvg: number | null;
-	isStaffHelpfulAvg: number | null;
-	isBathroomOnEntranceFloorAvg: number | null;
-	isContactlessPaymentOfferedAvg: number | null;
-	isStairsRequiredAvg: number | null;
-	spacingAvg: number | null;
-	promotion: {
-		monthly_budget: number;
-		max_cpc: number;
-	};
+function buildNamesToFieldsMap(){
+    let namesToFieldsMap: Record<string,string> = {};
+    for(let key in fieldsToNamesMap){
+      namesToFieldsMap[fieldsToNamesMap[key]] = key;
+    }
+    return namesToFieldsMap;
 }
+
+export const namesToFieldsMap = buildNamesToFieldsMap()

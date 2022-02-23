@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Peer types relevant to the Peer project.",
     "repository": "Peer-Stevens/peer-types",
-    "main": "ratingTypes.ts",
+    "main": "index.ts",
     "keywords": [
         "peer",
         "accessibility"
