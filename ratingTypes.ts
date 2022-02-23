@@ -1,8 +1,10 @@
 import type { ObjectId } from "mongodb";
 import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
  
+// Custom type to be used within Rating types
 type YesNoRating = 0 | 1 | null;
  
+// Rating types
 export interface Rating {
     _id?: ObjectId;
     userID: ObjectId;
@@ -21,6 +23,7 @@ export interface Rating {
     dateEdited?: Date;
 }
 
+// Map containing all of the different ratings
 export const fieldsToNamesMap: Record<string,string> = {
     avgGuideDogFriendly: "Guide Dog Friendliness",
     isMenuAccessibleAvg: "Menu Accessibility",
@@ -33,6 +36,7 @@ export const fieldsToNamesMap: Record<string,string> = {
     spacingAvg: "Spacing",
   };
 
+// Function that reverses the keys and values in the fieldsToNameMap
 function buildNamesToFieldsMap(){
     let namesToFieldsMap: Record<string,string> = {};
     for(let key in fieldsToNamesMap){
@@ -41,4 +45,5 @@ function buildNamesToFieldsMap(){
     return namesToFieldsMap;
 }
 
+// Reversed from the fieldsToNameMap
 export const namesToFieldsMap = buildNamesToFieldsMap()

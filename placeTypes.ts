@@ -1,10 +1,11 @@
 import type { ObjectId } from "mongodb";
 import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
 
+// Place type containing the place data pulled from the google api along with accesibility data
 export type PlaceWithAccesibilityData = GooglePlace & {
 	accessibilityData?: {
 		_id: string;
-    	guideDogAvg: number;
+		guideDogAvg: number;
 		isMenuAccessibleAvg: number;
 		noiseLevelAvg: number;
 		lightingAvg: number;
@@ -13,9 +14,14 @@ export type PlaceWithAccesibilityData = GooglePlace & {
 		isContactlessPaymentOfferedAvg: number;
 		isStairsRequiredAvg: number;
 		spacingAvg: number;
+		promotion: {
+			monthly_budget: number;
+			max_cpc: number;
+		};
 	};
 };
 
+//Place type only containing the place ID along with the accesibility data
 export interface Place {
 	_id: GooglePlace["place_id"];
 	guideDogAvg: number | null;
@@ -33,6 +39,7 @@ export interface Place {
 	};
 }
 
+// Place type containing the place data pulled from the google api, the custom Place type, and promotion types
 export type PlaceWithA11yAndPromo = GooglePlace & Place & {
 	promoMonth?: PromotionMonth;
 	isValidPromo?: boolean;
@@ -40,6 +47,7 @@ export type PlaceWithA11yAndPromo = GooglePlace & Place & {
 	spend_amount?: number;
 };
 
+// Promotion month type to be used within the PlaceWithA11yAndPromo type
 export interface PromotionMonth {
 	_id?: ObjectId;
 	placeID: GooglePlace["place_id"];
