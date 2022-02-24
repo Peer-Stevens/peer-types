@@ -23,6 +23,7 @@ jobs:
           cache: yarn
       
       - run: |
+          npm ci
           npm version patch
           npm publish
         
