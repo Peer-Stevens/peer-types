@@ -5,6 +5,7 @@
 	"repository": "Peer-Stevens/peer-types",
 	"main": "index.ts",
 	"scripts": {
+		"prepare": "husky install",
 		"lint": "eslint --config .eslintrc.js --fix . && prettier --config prettier.config.js --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss}\"",
 		"lint-check": "eslint --config .eslintrc.js . && prettier --config prettier.config.js --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss}\"",
 		"lint-staged": "pretty-quick --staged && lint-staged"
