@@ -23,5 +23,5 @@ jobs:
       - run: |
           npm version patch
           npm publish
-      - env: |
+        env: |
           NPM_TOKEN: ${{ secrets.JULIO_NPM_TOKEN }}
