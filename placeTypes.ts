@@ -5,7 +5,7 @@ import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
  * Contains place data from the Google Places API along with accesibility
  * and promotion data from the Peer database.
  */
-export type PlaceWithAccesibilityData = GooglePlace & {
+export type PlaceWithAccessibilityData = GooglePlace & {
 	accessibilityData?: {
 		_id: string;
 		guideDogAvg: number;
