@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  NPM_TOKEN: ${{ secrets.JULIO_NPM_TOKEN }}
+  NPM_TOKEN:
 
 jobs:
   build:
@@ -22,7 +22,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
 
-      - run: |
-          yarn install
-          npm version patch
-          npm publish --otp $NPM_TOKEN
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Bump version
+        run: npm version patch
+
+      - name: Publish
+        run: npm publish --otp ${{ secrets.JULIO_NPM_TOKEN }}
