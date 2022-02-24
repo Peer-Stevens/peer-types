@@ -26,4 +26,7 @@ jobs:
         run: yarn install
 
       - name: Publish
-        run: npm publish --otp ${{ secrets.JULIO_NPM_TOKEN }}
+        run: |
+          npm adduser
+          npm version patch
+          npm publish
