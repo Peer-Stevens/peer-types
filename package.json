@@ -1,6 +1,6 @@
 {
 	"name": "peer-types",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Peer types relevant to the Peer project.",
 	"repository": "Peer-Stevens/peer-types",
 	"main": "dist/index.js",
