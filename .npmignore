@@ -1,1 +1,5 @@
-placeholder.ts
+src
+prettier.config.js
+renovate.json
+node_modules
+tsconfig.json
