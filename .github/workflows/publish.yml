@@ -25,8 +25,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Bump version
-        run: npm version patch
-
       - name: Publish
         run: npm publish --otp ${{ secrets.JULIO_NPM_TOKEN }}
