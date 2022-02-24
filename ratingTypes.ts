@@ -1,8 +1,10 @@
 import type { ObjectId } from "mongodb";
 import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
- 
+
+// Custom type to be used within Rating types
 type YesNoRating = 0 | 1 | null;
- 
+
+// Rating types
 export interface Rating {
     _id?: ObjectId;
     userID: ObjectId;
@@ -20,20 +22,30 @@ export interface Rating {
     dateCreated: Date;
     dateEdited?: Date;
 }
- 
-export interface Place {
-	_id: GooglePlace["place_id"];
-	guideDogAvg: number | null;
-	isMenuAccessibleAvg: number | null;
-	noiseLevelAvg: number | null;
-	lightingAvg: number | null;
-	isStaffHelpfulAvg: number | null;
-	isBathroomOnEntranceFloorAvg: number | null;
-	isContactlessPaymentOfferedAvg: number | null;
-	isStairsRequiredAvg: number | null;
-	spacingAvg: number | null;
-	promotion: {
-		monthly_budget: number;
-		max_cpc: number;
-	};
+
+// Map containing all of the different ratings
+export const fieldsToNamesMap: Record<string,string> = {
+    avgGuideDogFriendly: "Guide Dog Friendliness",
+    isMenuAccessibleAvg: "Menu Accessibility",
+    noiseLevelAvg: "Noise Level",
+    lightingAvg: "Lighting",
+    isStaffHelpfulAvg: "Staff Helpfulness",
+    isBathroomOnEntranceFloorAvg: "Bathroom On Entrance Floor",
+    isContactlessPaymentOfferedAvg: "Contactless Payment Offered",
+    isStairsRequiredAvg: "Stairs Required",
+    spacingAvg: "Spacing",
+  };
+
+/*
+ * Function that reverses the keys and values in the fieldsToNameMap
+*/
+function buildNamesToFieldsMap(){
+    let namesToFieldsMap: Record<string,string> = {};
+    for(let key in fieldsToNamesMap){
+      namesToFieldsMap[fieldsToNamesMap[key]] = key;
+    }
+    return namesToFieldsMap;
 }
+
+// Reversed from the fieldsToNameMap
+export const namesToFieldsMap = buildNamesToFieldsMap()
