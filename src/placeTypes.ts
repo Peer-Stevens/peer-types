@@ -2,43 +2,28 @@ import type { ObjectId } from "mongodb";
 import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
 
 /**
- * Contains place data from the Google Places API along with accesibility
+ * Contains place data from the Google Places API along with accessibility
  * and promotion data from the Peer database.
  */
 export type PlaceWithAccessibilityData = GooglePlace & {
-	accessibilityData?: {
-		_id: string;
-		guideDogAvg: number;
-		isMenuAccessibleAvg: number;
-		noiseLevelAvg: number;
-		lightingAvg: number;
-		isStaffHelpfulAvg: number;
-		isBathroomOnEntranceFloorAvg: number;
-		isContactlessPaymentOfferedAvg: number;
-		isStairsRequiredAvg: number;
-		spacingAvg: number;
-		promotion: {
-			monthly_budget: number;
-			max_cpc: number;
-		};
-	};
+	accessibilityData?: PlaceA11yData;
 };
 
 /**
  * Contains only accessibility and promotion data from the Peer database.
  * This is the type of the Place documents from the database.
  */
-export type Place = {
+export type PlaceA11yData = {
 	_id: GooglePlace["place_id"];
-	guideDogAvg: number | null;
-	isMenuAccessibleAvg: number | null;
-	noiseLevelAvg: number | null;
-	lightingAvg: number | null;
-	isStaffHelpfulAvg: number | null;
-	isBathroomOnEntranceFloorAvg: number | null;
-	isContactlessPaymentOfferedAvg: number | null;
-	isStairsRequiredAvg: number | null;
-	spacingAvg: number | null;
+	guideDogAvg: number;
+	isMenuAccessibleAvg: number;
+	noiseLevelAvg: number;
+	lightingAvg: number;
+	isStaffHelpfulAvg: number;
+	isBathroomOnEntranceFloorAvg: number;
+	isContactlessPaymentOfferedAvg: number;
+	isStairsRequiredAvg: number;
+	spacingAvg: number;
 	promotion: {
 		monthly_budget: number;
 		max_cpc: number;
@@ -50,7 +35,7 @@ export type Place = {
  * and more detailed information about the promotion status of this location.
  */
 export type PlaceWithA11yAndPromo = GooglePlace &
-	Place & {
+	PlaceA11yData & {
 		promoMonth?: PromotionMonth;
 		isValidPromo?: boolean;
 		isPromoted?: boolean;
