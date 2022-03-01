@@ -1,7 +1,7 @@
 import type { ObjectId } from "mongodb";
 import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
 
-type YesNoRating = 0 | 1 | null;
+export type YesNoRating = 0 | 1 | null;
 
 // Rating types
 
