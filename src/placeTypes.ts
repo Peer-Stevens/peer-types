@@ -34,13 +34,13 @@ export type PlaceA11yData = {
  * Contains place data from the Google Places API, the Peer database on accessibility,
  * and more detailed information about the promotion status of this location.
  */
-export type PlaceWithA11yAndPromo = GooglePlace &
-	PlaceA11yData & {
-		promoMonth?: PromotionMonth;
-		isValidPromo?: boolean;
-		isPromoted?: boolean;
-		spend_amount?: number;
-	};
+export type PlaceWithA11yAndPromo = GooglePlace & {
+	accessibilityData: PlaceA11yData;
+	promoMonth?: PromotionMonth;
+	isValidPromo?: boolean;
+	isPromoted?: boolean;
+	spend_amount?: number;
+};
 
 /**
  * Tracks information about when a location paid for a promotion with Peer.
