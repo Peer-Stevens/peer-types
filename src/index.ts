@@ -1,17 +1,18 @@
 import {
-	PlaceWithAccessibilityData,
-	Place,
+	PlaceWithA11yData,
+	PlaceA11yData,
 	PlaceWithA11yAndPromo,
 	PromotionMonth,
 } from "./placeTypes";
-import { Rating, fieldsToNamesMap, namesToFieldsMap } from "./ratingTypes";
+import { Rating, fieldsToNamesMap, namesToFieldsMap, YesNoRating } from "./ratingTypes";
 
 export {
-	PlaceWithAccessibilityData,
-	Place,
+	PlaceWithA11yData,
+	PlaceA11yData,
 	PlaceWithA11yAndPromo,
 	PromotionMonth,
 	Rating,
+	YesNoRating,
 	fieldsToNamesMap,
 	namesToFieldsMap,
 };
