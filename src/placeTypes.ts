@@ -6,7 +6,22 @@ import type { Place as GooglePlace } from "@googlemaps/google-maps-services-js";
  * and promotion data from the Peer database.
  */
 export type PlaceWithA11yData = GooglePlace & {
-	accessibilityData?: PlaceA11yData;
+	accessibilityData?: {
+		_id: GooglePlace["place_id"];
+		guideDogAvg: number;
+		isMenuAccessibleAvg: number;
+		noiseLevelAvg: number;
+		lightingAvg: number;
+		isStaffHelpfulAvg: number;
+		isBathroomOnEntranceFloorAvg: number;
+		isContactlessPaymentOfferedAvg: number;
+		isStairsRequiredAvg: number;
+		spacingAvg: number;
+		promotion: {
+			monthly_budget: number;
+			max_cpc: number;
+		};
+	};
 };
 
 /**
@@ -15,15 +30,15 @@ export type PlaceWithA11yData = GooglePlace & {
  */
 export type PlaceA11yData = {
 	_id: GooglePlace["place_id"];
-	guideDogAvg: number;
-	isMenuAccessibleAvg: number;
-	noiseLevelAvg: number;
-	lightingAvg: number;
-	isStaffHelpfulAvg: number;
-	isBathroomOnEntranceFloorAvg: number;
-	isContactlessPaymentOfferedAvg: number;
-	isStairsRequiredAvg: number;
-	spacingAvg: number;
+	guideDogAvg: number | null;
+	isMenuAccessibleAvg: number | null;
+	noiseLevelAvg: number | null;
+	lightingAvg: number | null;
+	isStaffHelpfulAvg: number | null;
+	isBathroomOnEntranceFloorAvg: number | null;
+	isContactlessPaymentOfferedAvg: number | null;
+	isStairsRequiredAvg: number | null;
+	spacingAvg: number | null;
 	promotion: {
 		monthly_budget: number;
 		max_cpc: number;
